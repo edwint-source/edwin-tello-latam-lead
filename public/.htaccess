@@ -7,6 +7,11 @@
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
+  # If a prerendered .html exists for this path, serve it (avoids
+  # hydration mismatch when refreshing /bio, /speaking, etc.).
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+
   # Fallback all client-side routes to the static app shell.
   RewriteRule ^ index.html [L]
 </IfModule>
