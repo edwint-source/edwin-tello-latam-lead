@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { useI18n } from "@/i18n/I18nProvider";
 import portrait from "@/assets/edwin-portrait.jpg";
-import logo from "@/assets/logo-tll.svg";
+import logo from "@/assets/logo-tll.png";
 
 /**
  * Hero — fondo oscuro premium, dirección editorial executive thought leader.

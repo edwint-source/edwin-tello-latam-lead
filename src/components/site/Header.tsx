@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/logo-tll.svg";
+import logo from "@/assets/logo-tll.png";
 
 export function Header() {
   const { t } = useI18n();
