@@ -43,21 +43,25 @@ function Index() {
     <>
       <Hero />
 
-      {/* Stat strip */}
+      {/* Stat strip — premium authority cards */}
       <section className="bg-[var(--ink)] text-white border-t border-white/10">
-        <div className="mx-auto max-w-7xl">
-          <ul className="flex md:grid md:grid-cols-4 overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-10 md:py-14">
+          <ul className="flex md:grid md:grid-cols-4 gap-4 md:gap-5 overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory">
             {[
               { value: "25+", label: t.stats.years },
               { value: "ACOLDC", label: t.stats.acoldc },
               { value: "ICREA", label: t.stats.icrea },
               { value: "LATAM", label: t.stats.speaker },
-            ].map((it, i) => (
-              <li key={it.label} className={`snap-start min-w-[70%] md:min-w-0 px-6 lg:px-10 py-7 md:py-9 ${i > 0 ? "md:border-l border-white/10" : ""}`}>
-                <p className="font-display text-3xl md:text-4xl text-white">
+            ].map((it) => (
+              <li
+                key={it.label}
+                className="snap-start min-w-[70%] md:min-w-0 group relative rounded-sm border border-white/10 bg-white/[0.03] px-6 py-7 transition-all hover:border-[var(--brand-lime)]/60 hover:bg-white/[0.06]"
+              >
+                <span aria-hidden="true" className="absolute left-0 top-0 h-full w-[2px] bg-[var(--brand-lime)] opacity-0 transition-opacity group-hover:opacity-100" />
+                <p className="font-display text-4xl md:text-5xl text-white leading-none">
                   {it.value === "25+" ? <>25<span className="text-[var(--brand-lime)]">+</span></> : it.value}
                 </p>
-                <p className="mt-2 text-xs uppercase tracking-widest text-white/55">{it.label}</p>
+                <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-white/60">{it.label}</p>
               </li>
             ))}
           </ul>
@@ -101,12 +105,15 @@ function Index() {
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl tracking-tight">{t.topics.title}</h2>
             <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">{t.topics.subtitle}</p>
           </header>
-          <ul className="mt-14 grid gap-px bg-[var(--rule)] sm:grid-cols-2 lg:grid-cols-3 border border-[var(--rule)]">
+          <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {topics.map((topic, i) => {
               const Icon = topic.icon;
               return (
-                <Reveal key={topic.title.es} as="li" delay={i * 30} className="bg-white p-7 group transition-colors hover:bg-[var(--surface-soft)]">
-                  <Icon className="h-6 w-6 text-[var(--brand-purple)] transition-colors group-hover:text-[oklch(0.45_0.18_140)]" strokeWidth={1.5} />
+                <Reveal key={topic.title.es} as="li" delay={i * 30} className="group relative rounded-sm border border-[var(--rule)] bg-white p-7 transition-all hover:-translate-y-1 hover:border-[var(--brand-purple)]/40 hover:shadow-[0_24px_50px_-24px_rgba(0,0,0,0.18)]">
+                  <span aria-hidden="true" className="absolute left-0 top-0 h-[2px] w-12 bg-[var(--brand-lime)] opacity-0 transition-opacity group-hover:opacity-100" />
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-sm bg-[oklch(0.97_0.02_295)] transition-colors group-hover:bg-[var(--brand-purple)]/10">
+                    <Icon className="h-5 w-5 text-[var(--brand-purple)]" strokeWidth={1.6} />
+                  </span>
                   <h3 className="mt-5 font-display text-lg text-foreground">{topic.title[locale]}</h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{topic.desc[locale]}</p>
                 </Reveal>
@@ -159,7 +166,7 @@ function Index() {
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl tracking-tight">{t.speaking.title}</h2>
             <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-2xl">{t.speaking.subtitle}</p>
           </header>
-          <ol className="mt-12 grid gap-px bg-[var(--rule)] sm:grid-cols-2 lg:grid-cols-3 border border-[var(--rule)]">
+          <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { n: "01", t: { es: "Keynote", en: "Keynote", pt: "Keynote" }, d: { es: "Conferencia magistral de 30–60 minutos.", en: "30–60 minute master keynote.", pt: "Conferência magistral de 30–60 minutos." } },
               { n: "02", t: { es: "Panel", en: "Panel", pt: "Painel" }, d: { es: "Panelista experto en mesas regionales.", en: "Expert panelist in regional roundtables.", pt: "Painelista expert em mesas regionais." } },
@@ -168,8 +175,9 @@ function Index() {
               { n: "05", t: { es: "Advisory session", en: "Advisory session", pt: "Sessão de assessoria" }, d: { es: "Asesoría privada para C-level e inversionistas.", en: "Private advisory for C-level.", pt: "Consultoria privada para C-level." } },
               { n: "06", t: { es: "Entrevista", en: "Interview", pt: "Entrevista" }, d: { es: "Para prensa, podcast o contenido de marca.", en: "For press, podcast or branded content.", pt: "Para imprensa, podcast ou conteúdo." } },
             ].map((f, i) => (
-              <Reveal as="li" key={f.n} delay={i * 40} className="bg-white p-7">
+              <Reveal as="li" key={f.n} delay={i * 40} className="group relative rounded-sm border border-[var(--rule)] bg-white p-7 transition-all hover:-translate-y-1 hover:border-[var(--brand-purple)]/40 hover:shadow-[0_24px_50px_-24px_rgba(0,0,0,0.18)]">
                 <span className="font-display text-2xl text-[var(--brand-purple)]">{f.n}</span>
+                <span aria-hidden="true" className="ml-2 inline-block h-[2px] w-8 align-middle bg-[var(--brand-lime)]" />
                 <h3 className="mt-3 font-display text-xl">{f.t[locale]}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.d[locale]}</p>
               </Reveal>
@@ -195,10 +203,11 @@ function Index() {
           <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {upcomingEvents.map((e, i) => (
               <Reveal as="li" key={i} delay={i * 60}>
-                <article className="h-full bg-white border border-[var(--rule)] p-6 transition-shadow hover:shadow-[0_20px_40px_-20px_rgba(0,0,0,0.15)]">
-                  <p className="kicker">{formatStableDate(e.date, locale)}</p>
-                  <h3 className="mt-3 font-display text-xl">{e.name}</h3>
-                  <p className="mt-3 inline-flex items-center gap-1.5 text-sm text-muted-foreground"><MapPin className="h-3.5 w-3.5" strokeWidth={1.5} /> {e.city}, {e.country}</p>
+                <article className="group relative h-full rounded-sm bg-white border border-[var(--rule)] p-6 transition-all hover:-translate-y-1 hover:border-[var(--brand-purple)]/40 hover:shadow-[0_24px_50px_-24px_rgba(0,0,0,0.18)]">
+                  <span aria-hidden="true" className="absolute left-0 top-6 h-8 w-[2px] bg-[var(--brand-lime)]" />
+                  <p className="kicker pl-3">{formatStableDate(e.date, locale)}</p>
+                  <h3 className="mt-3 font-display text-xl leading-snug">{e.name}</h3>
+                  <p className="mt-4 inline-flex items-center gap-1.5 text-sm text-muted-foreground"><MapPin className="h-3.5 w-3.5" strokeWidth={1.5} /> {e.city}, {e.country}</p>
                   <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-muted-foreground"><Calendar className="h-3.5 w-3.5" strokeWidth={1.5} /> {e.role}</p>
                 </article>
               </Reveal>
@@ -218,12 +227,13 @@ function Index() {
           <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {featuredInsights.map((insight, i) => (
               <Reveal as="li" key={insight.title} delay={i * 40}>
-                <article className="h-full border border-[var(--rule)] p-6 transition-colors hover:border-[var(--brand-lime)]">
+                <article className="group relative h-full rounded-sm border border-[var(--rule)] bg-white p-6 transition-all hover:-translate-y-1 hover:border-[var(--brand-purple)]/40 hover:shadow-[0_24px_50px_-24px_rgba(0,0,0,0.18)]">
                   <div className="flex items-center justify-between">
                     <p className="kicker-muted">{insight.category}</p>
                     <span className="text-[10px] font-semibold uppercase tracking-widest text-[var(--brand-purple)] border border-[var(--brand-purple)]/30 rounded-full px-2 py-0.5">{t.insights.soon}</span>
                   </div>
-                  <h3 className="mt-4 font-display text-lg leading-tight">{insight.title}</h3>
+                  <h3 className="mt-4 font-display text-lg leading-snug">{insight.title}</h3>
+                  <span aria-hidden="true" className="mt-5 block h-[2px] w-10 bg-[var(--brand-lime)] opacity-0 transition-opacity group-hover:opacity-100" />
                 </article>
               </Reveal>
             ))}
