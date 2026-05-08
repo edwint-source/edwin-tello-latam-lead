@@ -10,6 +10,9 @@ const staticRoutes = [
   "/contacto",
 ];
 
+const prerenderOutputPath = (path: string) =>
+  path === "/" ? "/index.html" : `${path}/index.html`;
+
 export default defineConfig({
   cloudflare: false,
   tanstackStart: {
@@ -19,6 +22,9 @@ export default defineConfig({
       crawlLinks: true,
       filter: ({ path }: { path: string }) => staticRoutes.includes(path),
     },
-    pages: staticRoutes.map((path) => ({ path, prerender: { enabled: true } })),
+    pages: staticRoutes.map((path) => ({
+      path,
+      prerender: { enabled: true, outputPath: prerenderOutputPath(path) },
+    })),
   },
 });
