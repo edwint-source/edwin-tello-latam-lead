@@ -8,6 +8,22 @@ import { videos } from "@/data/videos";
 import { insights } from "@/data/insights";
 import { ArrowRight, ArrowUpRight, Play, MapPin, Calendar } from "lucide-react";
 import aboutImg from "@/assets/edwin-about.jpg";
+import speakingPanel from "@/assets/edwin-panel.jpg";
+import speaking1 from "@/assets/edwin-speaking-1.jpg";
+import speaking2 from "@/assets/edwin-speaking-2.jpg";
+import speaking3 from "@/assets/edwin-speaking-3.jpg";
+
+const MONTHS_ES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const MONTHS_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const MONTHS_PT = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+
+function formatStableDate(iso: string, locale: string) {
+  // Stable, locale-aware formatter that yields the same output on server & client (no timezone drift).
+  const [y, m, d] = iso.split("-").map(Number);
+  const months = locale === "en" ? MONTHS_EN : locale === "pt" ? MONTHS_PT : MONTHS_ES;
+  const day = String(d).padStart(2, "0");
+  return `${day} ${months[m - 1]} ${y}`;
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -184,7 +200,7 @@ function Index() {
             {upcomingEvents.map((e, i) => (
               <Reveal as="li" key={i} delay={i * 60}>
                 <article className="h-full bg-white border border-[var(--rule)] p-6 transition-shadow hover:shadow-[0_20px_40px_-20px_rgba(0,0,0,0.15)]">
-                  <p className="kicker">{new Date(e.date).toLocaleDateString(locale === "es" ? "es-ES" : locale, { day: "2-digit", month: "short", year: "numeric" })}</p>
+                  <p className="kicker">{formatStableDate(e.date, locale)}</p>
                   <h3 className="mt-3 font-display text-xl">{e.name}</h3>
                   <p className="mt-3 inline-flex items-center gap-1.5 text-sm text-muted-foreground"><MapPin className="h-3.5 w-3.5" strokeWidth={1.5} /> {e.city}, {e.country}</p>
                   <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-muted-foreground"><Calendar className="h-3.5 w-3.5" strokeWidth={1.5} /> {e.role}</p>
