@@ -8,10 +8,6 @@ import { videos } from "@/data/videos";
 import { insights } from "@/data/insights";
 import { ArrowRight, ArrowUpRight, Play, MapPin, Calendar } from "lucide-react";
 import aboutImg from "@/assets/edwin-about.jpg";
-import speakingPanel from "@/assets/edwin-panel.jpg";
-import speaking1 from "@/assets/edwin-speaking-1.jpg";
-import speaking2 from "@/assets/edwin-speaking-2.jpg";
-import speaking3 from "@/assets/edwin-speaking-3.jpg";
 
 const MONTHS_ES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
 const MONTHS_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -152,27 +148,6 @@ function Index() {
               </Reveal>
             ))}
           </ul>
-        </div>
-      </section>
-
-      {/* On stage — galería editorial */}
-      <section className="bg-[var(--ink)] text-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 pb-20 md:pb-28 -mt-4">
-          <div className="grid gap-2 md:gap-3 grid-cols-2 md:grid-cols-12">
-            <Reveal className="md:col-span-7 aspect-[16/10] overflow-hidden">
-              <img src={speakingPanel} alt="Edwin Tello en panel ejecutivo de Data Centers" className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.02]" loading="lazy" />
-            </Reveal>
-            <Reveal className="md:col-span-5 aspect-[4/5] md:aspect-[16/10] overflow-hidden" delay={80}>
-              <img src={speaking1} alt="Edwin Tello hablando en escenario" className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.02]" loading="lazy" />
-            </Reveal>
-            <Reveal className="md:col-span-5 aspect-[4/5] md:aspect-[4/5] overflow-hidden" delay={120}>
-              <img src={speaking2} alt="Edwin Tello en conferencia internacional" className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.02]" loading="lazy" />
-            </Reveal>
-            <Reveal className="md:col-span-7 aspect-[16/10] md:aspect-[4/5] overflow-hidden" delay={160}>
-              <img src={speaking3} alt="Edwin Tello durante intervención en panel" className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.02]" loading="lazy" />
-            </Reveal>
-          </div>
-          <p className="mt-6 text-center kicker">En escenario · LATAM</p>
         </div>
       </section>
 
