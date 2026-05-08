@@ -1,12 +1,8 @@
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { useI18n } from "@/i18n/I18nProvider";
-import portrait from "@/assets/edwin-portrait.jpg";
-import logo from "@/assets/logo-tll.png";
 
 /**
- * Hero — fondo oscuro premium, dirección editorial executive thought leader.
- * NOTA: El retrato actual es un placeholder editorial. Reemplazar
- * src/assets/edwin-portrait.jpg con una foto profesional definitiva.
+ * Hero — fondo oscuro premium, tipografía editorial, sin foto.
  */
 export function Hero() {
   const { t } = useI18n();
@@ -26,9 +22,7 @@ export function Hero() {
       />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-32 pb-20 md:pt-40 md:pb-28">
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-12 items-center">
-          {/* Texto */}
-          <div className="lg:col-span-7">
+        <div className="max-w-4xl">
             <p className="kicker reveal is-visible">{t.hero.kicker}</p>
             <h1
               className="reveal is-visible mt-5 font-display text-white"
@@ -79,38 +73,6 @@ export function Hero() {
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={1.75} />
               </a>
             </div>
-          </div>
-
-          {/* Visual */}
-          <div className="lg:col-span-5">
-            <div
-              className="reveal is-visible relative mx-auto max-w-md lg:max-w-none"
-              style={{ transitionDelay: "200ms" }}
-            >
-              <div
-                aria-hidden="true"
-                className="absolute -inset-8 rounded-full opacity-50 blur-3xl"
-                style={{ background: "radial-gradient(circle, oklch(0.5 0.31 295 / 0.45), transparent 70%)" }}
-              />
-              <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-white/10">
-                <img
-                  src={portrait}
-                  alt="Edwin Tello"
-                  className="h-full w-full object-cover"
-                  loading="eager"
-                />
-                {/* Marco editorial lima — esquina */}
-                <div className="pointer-events-none absolute -top-3 -left-3 h-16 w-16 border-t border-l border-[var(--brand-lime)]" />
-                <div className="pointer-events-none absolute -bottom-3 -right-3 h-16 w-16 border-b border-r border-[var(--brand-lime)]" />
-                <img
-                  src={logo}
-                  alt=""
-                  className="absolute bottom-3 left-3 h-9 w-9 opacity-90"
-                  aria-hidden="true"
-                />
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
