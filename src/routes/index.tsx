@@ -7,6 +7,7 @@ import { events } from "@/data/events";
 import { videos } from "@/data/videos";
 import { insights } from "@/data/insights";
 import { ArrowRight, ArrowUpRight, Play, MapPin, Calendar } from "lucide-react";
+import aboutImg from "@/assets/edwin-about.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -58,7 +59,7 @@ function Index() {
             <Reveal className="lg:col-span-5">
               <div className="relative">
                 <div className="aspect-[4/5] overflow-hidden rounded-sm shadow-[0_30px_60px_-30px_rgba(0,0,0,0.25)]">
-                  <img src="/src/assets/edwin-about.jpg" alt="Edwin Tello en evento" className="h-full w-full object-cover" loading="lazy" />
+                  <img src={aboutImg} alt="Edwin Tello en evento" className="h-full w-full object-cover" loading="lazy" />
                 </div>
                 <div className="absolute -bottom-3 -left-3 h-16 w-16 border-b border-l border-[var(--brand-lime)]" aria-hidden="true" />
               </div>
