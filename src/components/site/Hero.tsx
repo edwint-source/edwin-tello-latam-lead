@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { useI18n } from "@/i18n/I18nProvider";
 import portrait from "@/assets/edwin-portrait.jpg";
@@ -59,26 +58,26 @@ export function Hero() {
               className="reveal is-visible mt-9 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-4"
               style={{ transitionDelay: "340ms" }}
             >
-              <Link
-                to="/contacto"
+              <a
+                href="/contacto"
                 className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-[var(--brand-lime)] text-[var(--ink)] font-semibold transition-transform hover:scale-[1.02] focus-lime"
               >
                 {t.hero.ctaPrimary}
                 <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
-              </Link>
-              <Link
-                to="/videos"
+              </a>
+              <a
+                href="/videos"
                 className="inline-flex items-center justify-center h-12 px-6 rounded-full border border-white/25 text-white text-sm font-medium hover:border-[var(--brand-lime)] hover:text-[var(--brand-lime)] transition-colors focus-lime"
               >
                 {t.hero.ctaSecondary}
-              </Link>
-              <Link
-                to="/insights"
+              </a>
+              <a
+                href="/insights"
                 className="group inline-flex items-center gap-1.5 h-12 px-2 text-white/80 hover:text-[var(--brand-lime)] text-sm font-medium transition-colors focus-lime"
               >
                 {t.hero.ctaTertiary}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={1.75} />
-              </Link>
+              </a>
             </div>
           </div>
 
