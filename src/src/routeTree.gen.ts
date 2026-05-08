@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './../routes/__root'
 import { Route as VideosRouteImport } from './../routes/videos'
 import { Route as SpeakingRouteImport } from './../routes/speaking'
+import { Route as InsightsRouteImport } from './../routes/insights'
 import { Route as EventosRouteImport } from './../routes/eventos'
+import { Route as ContactoRouteImport } from './../routes/contacto'
 import { Route as BioRouteImport } from './../routes/bio'
 import { Route as IndexRouteImport } from './../routes/index'
 
@@ -25,9 +27,19 @@ const SpeakingRoute = SpeakingRouteImport.update({
   path: '/speaking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EventosRoute = EventosRouteImport.update({
   id: '/eventos',
   path: '/eventos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BioRoute = BioRouteImport.update({
@@ -44,14 +56,18 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bio': typeof BioRoute
+  '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRoute
+  '/insights': typeof InsightsRoute
   '/speaking': typeof SpeakingRoute
   '/videos': typeof VideosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bio': typeof BioRoute
+  '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRoute
+  '/insights': typeof InsightsRoute
   '/speaking': typeof SpeakingRoute
   '/videos': typeof VideosRoute
 }
@@ -59,22 +75,48 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/bio': typeof BioRoute
+  '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRoute
+  '/insights': typeof InsightsRoute
   '/speaking': typeof SpeakingRoute
   '/videos': typeof VideosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/bio' | '/eventos' | '/speaking' | '/videos'
+  fullPaths:
+    | '/'
+    | '/bio'
+    | '/contacto'
+    | '/eventos'
+    | '/insights'
+    | '/speaking'
+    | '/videos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/bio' | '/eventos' | '/speaking' | '/videos'
-  id: '__root__' | '/' | '/bio' | '/eventos' | '/speaking' | '/videos'
+  to:
+    | '/'
+    | '/bio'
+    | '/contacto'
+    | '/eventos'
+    | '/insights'
+    | '/speaking'
+    | '/videos'
+  id:
+    | '__root__'
+    | '/'
+    | '/bio'
+    | '/contacto'
+    | '/eventos'
+    | '/insights'
+    | '/speaking'
+    | '/videos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BioRoute: typeof BioRoute
+  ContactoRoute: typeof ContactoRoute
   EventosRoute: typeof EventosRoute
+  InsightsRoute: typeof InsightsRoute
   SpeakingRoute: typeof SpeakingRoute
   VideosRoute: typeof VideosRoute
 }
@@ -95,11 +137,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SpeakingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/eventos': {
       id: '/eventos'
       path: '/eventos'
       fullPath: '/eventos'
       preLoaderRoute: typeof EventosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bio': {
@@ -122,7 +178,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BioRoute: BioRoute,
+  ContactoRoute: ContactoRoute,
   EventosRoute: EventosRoute,
+  InsightsRoute: InsightsRoute,
   SpeakingRoute: SpeakingRoute,
   VideosRoute: VideosRoute,
 }
