@@ -14,15 +14,11 @@ export default defineConfig({
   cloudflare: false,
   tanstackStart: {
     server: { entry: "server" },
-    spa: {
+    prerender: {
       enabled: true,
-      prerender: {
-        outputPath: "/index.html",
-      },
+      crawlLinks: true,
+      filter: ({ path }: { path: string }) => staticRoutes.includes(path),
     },
-    pages: staticRoutes.map((path) => ({
-      path,
-      prerender: { enabled: true, outputPath: `${path === "/" ? "/index" : path}.html` },
-    })),
+    pages: staticRoutes.map((path) => ({ path, prerender: { enabled: true } })),
   },
 });
