@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Linkedin, Youtube, Instagram, Mail, Phone } from "lucide-react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { site } from "@/data/site";
-import logo from "@/assets/logo-tll.svg";
+import logo from "@/assets/logo-tll.png";
 
 export function Footer() {
   const { t } = useI18n();
